@@ -1,0 +1,36 @@
+drop database biblioteca;
+
+create database biblioteca;
+
+use biblioteca;
+
+create table livro (
+	id int primary key not null auto_increment,
+    título varchar(100) not null,
+    autor varchar(100) not null,
+    editora varchar(100) not null,
+    ano int not null,
+    isbn varchar(25) not null
+);
+
+create table exemplar ( 
+	id int primary key not null auto_increment,
+    livro_id int, foreign key(livro_id) references livro(id),
+    disponivel varchar(20)
+);
+
+create table usuario (
+	  id int primary key not null auto_increment,
+      nome varchar(255) not null,
+      email varchar(255) not null,
+      telefone varchar(255)
+)
+
+create table emprestimo (
+	id int primary key not null auto_increment,
+    exemplar_id, 
+    usuario_id,
+    data_emprestimo datetime not null auto_increment,
+    data_devolucao  datetime not null auto_increment
+
+)
